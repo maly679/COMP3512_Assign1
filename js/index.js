@@ -369,7 +369,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     singlePageDiv.appendChild(pPara);
                     pPara.style.gridColumn = "2/3";
                     pPara.style.gridRow = "2/3";
-                    4
                     //colors paragraph outlined
                     let colorTitle = document.createElement("p");
                     pPara.insertAdjacentElement("afterend", colorTitle);
