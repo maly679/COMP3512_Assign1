@@ -1,0 +1,109 @@
+body {
+    margin: 40px 40px 40px 20px;
+    background-image: url("../images/last-supper-da-vinci.jpg");
+    font-family:Times New Roman, Times, serif;
+    font-size: 0.8rem;
+    color:black;
+}
+.container {
+    display: grid;
+    grid-template-columns: 20% 30% 50%;
+    grid-template-rows: 250px 400px minmax(400px, auto);
+    grid-gap:10px;
+    width: 100%;
+}
+.box {
+    background-color: rgb(235, 153, 52);
+    padding: 20px;
+    grid-gap:2px;
+    font-size: 150%;
+    border: 5px ridge;
+    border-collapse: collapse;
+}
+.h {
+    grid-column: 1 / span 3;
+    text-align: center;
+    font-style: oblique;
+    color: white;
+}
+a{
+    color: brown;
+}
+#paintingTop {
+    margin-left: 165px;
+}
+h2 {
+    text-align: center;
+    text-transform: uppercase;
+}
+.galleries {
+    grid-column: 1 / span 1;
+    grid-row-start: 2;
+    grid-row-end: 4;
+    text-align: left;
+}
+.pBox {
+    display: grid;
+    grid-template-columns: 20% 20% 40% 20%;
+    grid-template-rows: 50px 45px auto;
+    text-align: left;
+}
+.pBox h2 {
+    margin-left: 30px;
+}
+.pBox li {
+    height: 80px;
+    text-align:center;
+}
+.pBox>h2 {
+    grid-column: 2/4;
+    grid-row: 1/2;
+}
+.galleryInformation {
+    text-align: center;
+}
+.paintings {
+    grid-column: 3 / span 1;
+    grid-row-start: 2;
+    grid-row-end: 4;
+}
+#title {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start:2;
+    grid-row-end: 4;
+}
+#year {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start:2;
+    grid-row-end: 4;
+}
+#artWork {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start:3;
+    grid-row-end: 4;
+}
+#artistNames{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start:2;
+    grid-row-end: 4;
+}
+#map {
+    grid-column: 2 / span 1;
+    grid-row-start: 3;
+    grid-row-end: 4;
+}
+ul#galleryList li {
+    margin-bottom: 0.25rem;
+    cursor: pointer;
+    list-style-type: none;
+}
+#galleryInfo {
+    margin-right: 43px;
+}
+#paintingsList li{
+    margin-right: 100px;
+}
