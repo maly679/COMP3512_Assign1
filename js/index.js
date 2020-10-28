@@ -360,7 +360,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     pTitleHeader.textContent = d.Title;
                     singlePageDiv.appendChild(pTitleHeader);
                     pTitleHeader.style.marginLeft = "80px";
-                    const pInfo = document.createTextNode(`Year: ${d.YearOfWork}, Medium: ${d.Medium}, Width: ${d.Width}, Height: ${d.Height}, CopyRight: ${d.CopyrightText}, Gallery Name: ${d.GalleryName}, Gallery City: ${d.GalleryCity}, Museum Link: ${d.MuseumLink}, Decription: ${d.Description}`);
+                    let aMuseum = document.createElement("a");
+                    aMuseum.setAttribute("href", d.MuseumLink);
+                    aMuseum.textContent = d.MuseumLink;
+                    const pInfo = document.createTextNode(`Year: ${d.YearOfWork}, Medium: ${d.Medium}, Width: ${d.Width}, Height: ${d.Height}, CopyRight: ${d.CopyrightText}, Gallery Name: ${d.GalleryName}, Gallery City: ${d.GalleryCity}, Museum Link: `);
+                    const pInfo2 = document.createTextNode(`, Decription: ${d.Description}`);
+                    //painting info paragraph initialized and processed.
+                    let pPara = document.createElement("p");
+                    pPara.appendChild(pInfo);
+                    pPara.appendChild(aMuseum);
+                    pPara.appendChild(pInfo2);
                     //painting info paragraph initialized and processed.
                     let pPara = document.createElement("p");
                     pPara.appendChild(pInfo);
