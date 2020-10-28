@@ -342,11 +342,10 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(pURL).then(response => response.json()).then(data => {
 
             for (let d of data) {
-                console.log(document.getElementById(`artist${e.target.getAttribute("id").textContent}`));
+
                 if (e.target.textContent == d.Title && document.getElementById(`artist${e.target.getAttribute("id")}`).textContent == d.LastName) {
 
                     paintingSrc = `https://res.cloudinary.com/funwebdev/image/upload/w_600/art/paintings/${d.ImageFileName}`;
-
                     const singlePageImageView = document.createElement("img");
                     singlePageImageView.setAttribute("src", paintingSrc);
                     singlePageImageView.setAttribute("alt", d.Title);
