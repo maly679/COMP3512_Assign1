@@ -371,7 +371,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     pPara.appendChild(pInfo2);
                     pTitleHeader.insertAdjacentElement("afterend", pPara);
                     pTitleHeader.style.marginRight = "90px";
-                    singlePageDiv.appendChild(pPara);
                     pPara.style.gridColumn = "2/3";
                     pPara.style.gridRow = "2/3";
                     //colors paragraph outlined
