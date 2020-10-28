@@ -370,9 +370,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     pPara.appendChild(pInfo);
                     pPara.appendChild(aMuseum);
                     pPara.appendChild(pInfo2);
-                    //painting info paragraph initialized and processed.
-                    let pPara = document.createElement("p");
-                    pPara.appendChild(pInfo);
                     pTitleHeader.insertAdjacentElement("afterend", pPara);
                     pTitleHeader.style.marginRight = "90px";
                     singlePageDiv.appendChild(pPara);
