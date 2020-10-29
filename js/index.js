@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     //global variable declarations
-    var map;
-    var clng;
-    var clat;
-    var glist;
+    let map;
+    let clng;
+    let clat;
+    let glist;
     const galleryURL = 'https://www.randyconnolly.com/funwebdev/3rd/api/art/galleries.php';
 
     //function declararions
@@ -70,27 +70,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function getPaintingInfoURL(id) {
-        let paintingInfoURL = "https://www.randyconnolly.com/funwebdev/3rd/api/art/paintings.php?gallery=xx";
-        paintingInfoURLA = paintingInfoURL.split("=");
-
-
-        for (let i = 0; i < paintingInfoURLA.length; i++) {
-            if (paintingInfoURLA[i].match("xx")) {
-                paintingInfoURLA.splice(i, 1, id);
-            }
-
-        }
-
-        return paintingInfoURLA.join("=");
+        let paintingInfoURL = `https://www.randyconnolly.com/funwebdev/3rd/api/art/paintings.php?gallery=${id}`;
+        return paintingInfoURL;
 
     }
-
 
     // Main Program
 
 
     //creating show/hide gallery list button
-    let buttonShowGallery = document.createElement("button");
+    const buttonShowGallery = document.createElement("button");
     document.querySelector(".h header h2").insertAdjacentElement("afterend", buttonShowGallery);
     buttonShowGallery.classList.add("showGallery");
     buttonShowGallery.classList.add("galleryButton");
@@ -108,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.querySelector("#galleryList").style.listStyle = "none";
     //adding loading gif.
-    let imgGif = document.createElement("img");
+    const imgGif = document.createElement("img");
     imgGif.setAttribute("src", "images/loadingGif.gif");
     imgGif.setAttribute("alt", "Loading");
     document.querySelector("#galleryList").appendChild(imgGif);
@@ -183,13 +172,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     //process header click on painting list
-    let paintingH2 = document.querySelectorAll("div>h2");
+    const paintingH2 = document.querySelectorAll("div>h2");
     for (let ph of paintingH2) {
         ph.addEventListener('click', function(e) {
-
             if (e.target.textContent == "Title") {
                 processPaintingsInfo(getIDFromClass(document.querySelector(".paintings").className), "Title");
-
             } else {
                 if (e.target.textContent == "Artist") {
                     processPaintingsInfo(getIDFromClass(document.querySelector(".paintings").className), "LastName");
@@ -207,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
         //display loading gif while data is retrieved
         document.querySelector("#title h2").innerHTML = "";
         document.querySelector("#title h2").appendChild(imgGif);
-        let paintingInfoURL = getPaintingInfoURL(id);
+        const paintingInfoURL = getPaintingInfoURL(id);
 
         //re-initializations commence
         document.querySelector("#paintingsList").style.listStyle = "none";
@@ -293,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 option.setAttribute("id", `artist${i}`);
                 document.querySelector("#artistList").appendChild(option);
                 option = document.createElement("li");
-                let titleNameLink = document.createElement("a");
+                const titleNameLink = document.createElement("a");
                 titleNameLink.setAttribute("href", "#");
                 option.textContent = d.Title;
                 titleNameLink.appendChild(option);
@@ -314,14 +301,14 @@ document.addEventListener('DOMContentLoaded', function() {
         //remove gallery show/hide button for single painting page view
         document.querySelector(".galleryButton").style.display = "none";
         //retrieve gallery id, by analyzing the paintings class, which is dynamically re-assigned this value upon gallery selection
-        pId = getIDFromClass(document.querySelector(".paintings").className);
+        const pId = getIDFromClass(document.querySelector(".paintings").className);
         //re-initializations commence
         document.querySelector(".galleryInformation").style.display = "none";
         document.querySelector(".galleries").style.display = "none";
         document.querySelector(".paintings").style.display = "none";
         document.querySelector("#map").style.display = "none";
         //single page div design commences
-        let singlePageDiv = document.createElement("div");
+        const singlePageDiv = document.createElement("div");
         singlePageDiv.className = "box singlePage";
         document.querySelector(".h").insertAdjacentElement('afterend', singlePageDiv);
         singlePageDiv.style.gridRow = "2/4";
@@ -330,7 +317,7 @@ document.addEventListener('DOMContentLoaded', function() {
         singlePageDiv.style.gridTemplateColumns = "auto 60%";
         singlePageDiv.style.gridTemplateRows = "100px auto 200px 100px";
         //painting div generated
-        let imageD = document.createElement("div");
+        const imageD = document.createElement("div");
         imageD.classList.add("imageDiv");
         singlePageDiv.appendChild(imageD);
         imageD.style.gridColumn = "1/2";
@@ -342,7 +329,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(pURL).then(response => response.json()).then(data => {
 
             for (let d of data) {
-
+                //Ensuring both title and artist match, before including painting, which is retrieved from the id of the artist (assigned when artists were set) as well as the title name
                 if (e.target.textContent == d.Title && document.getElementById(`artist${e.target.getAttribute("id")}`).textContent == d.LastName) {
 
                     paintingSrc = `https://res.cloudinary.com/funwebdev/image/upload/w_600/art/paintings/${d.ImageFileName}`;
@@ -353,13 +340,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     singlePageImageView.setAttribute("id", pId);
                     imageD.appendChild(singlePageImageView);
                     //information for respective painitng.
-                    let pTitleHeader = document.createElement("h2");
+                    const pTitleHeader = document.createElement("h2");
                     pTitleHeader.style.gridColumn = "2/3";
                     pTitleHeader.style.gridRow = "1/2";
                     pTitleHeader.textContent = d.Title;
                     singlePageDiv.appendChild(pTitleHeader);
                     pTitleHeader.style.marginLeft = "80px";
-                    let aMuseum = document.createElement("a");
+                    const aMuseum = document.createElement("a");
                     aMuseum.setAttribute("href", d.MuseumLink);
                     aMuseum.textContent = d.MuseumLink;
                     const pInfo = document.createTextNode(`Year: ${d.YearOfWork}, Medium: ${d.Medium}, Width: ${d.Width}, Height: ${d.Height}, CopyRight: ${d.CopyrightText}, Gallery Name: ${d.GalleryName}, Gallery City: ${d.GalleryCity}, Museum Link: `);
@@ -371,10 +358,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     pPara.appendChild(pInfo2);
                     pTitleHeader.insertAdjacentElement("afterend", pPara);
                     pTitleHeader.style.marginRight = "90px";
+                    singlePageDiv.appendChild(pPara);
                     pPara.style.gridColumn = "2/3";
                     pPara.style.gridRow = "2/3";
                     //colors paragraph outlined
-                    let colorTitle = document.createElement("p");
+                    const colorTitle = document.createElement("p");
                     pPara.insertAdjacentElement("afterend", colorTitle);
                     pPara.style.margin = "28px";
                     colorTitle.style.gridColumn = "2/3";
@@ -434,7 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     //creating the close button 
                     const btn = document.createElement("button");
                     btn.classList.add("closeBtn");
-                    let c = document.createTextNode("Close");
+                    const c = document.createTextNode("Close");
                     btn.appendChild(c);
                     document.querySelector(".colorDivBox").insertAdjacentElement("afterend", btn);
                     btn.style.width = "10.8rem";
@@ -490,7 +478,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //process dsiplay upon click of image, whereby the w_xxx in the src of image is the factor outlining whether single painting view or large painting view should be displayed
     function imageClicked(singlePageDiv, e) {
-        let largeImage = document.querySelector("img");
+        const largeImage = document.querySelector("img");
         let paintingSrc = largeImage.getAttribute("src");
 
         let paintingSrcChg = paintingSrc.split("/");
@@ -546,7 +534,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelector(".largeImageView").innerHTML = "";
             //revert to regular single painting page view.
             document.querySelector(".singlePage").style.display = "grid";
-            let regSizedPainting = document.createElement("img");
+            const regSizedPainting = document.createElement("img");
             regSizedPainting.classList.add("imageView");
             regSizedPainting.setAttribute("src", paintingSrcChg.join("/"));
             document.querySelector(".imageDiv").appendChild(regSizedPainting);
