@@ -137,9 +137,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 let option = document.createElement("li");
                 option.textContent = gl.GalleryName;
                 document.querySelector("#galleryInfo").appendChild(option);
+                if (!gl.GalleryName.match(gl.GalleryNativeName)) {
                 option = document.createElement("li");
                 option.textContent = gl.GalleryNativeName;
                 document.querySelector("#galleryInfo").appendChild(option);
+                }
                 option = document.createElement("li");
                 option.textContent = gl.GalleryCity;
                 document.querySelector("#galleryInfo").appendChild(option);
