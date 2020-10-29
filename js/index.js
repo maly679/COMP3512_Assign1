@@ -352,12 +352,15 @@ document.addEventListener('DOMContentLoaded', function() {
                     aMuseum.setAttribute("href", d.MuseumLink);
                     aMuseum.textContent = d.MuseumLink;
                     const pInfo = document.createTextNode(`Year: ${d.YearOfWork}, Medium: ${d.Medium}, Width: ${d.Width}, Height: ${d.Height}, CopyRight: ${d.CopyrightText}, Gallery Name: ${d.GalleryName}, Gallery City: ${d.GalleryCity}, Museum Link: `);
-                    const pInfo2 = document.createTextNode(`, Decription: ${d.Description}`);
+
                     //painting info paragraph initialized and processed.
                     let pPara = document.createElement("p");
                     pPara.appendChild(pInfo);
                     pPara.appendChild(aMuseum);
+                    if (d.Description!=null) {
+                    const pInfo2 = document.createTextNode(`, Decription: ${d.Description}`);
                     pPara.appendChild(pInfo2);
+                    }
                     pTitleHeader.insertAdjacentElement("afterend", pPara);
                     pTitleHeader.style.marginRight = "90px";
                     singlePageDiv.appendChild(pPara);
