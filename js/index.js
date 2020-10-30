@@ -512,7 +512,6 @@ document.addEventListener('DOMContentLoaded', function() {
             singlePageDiv = document.createElement("div");
             singlePageDiv.style.width = "80rem";
             singlePageDiv.style.height = "1300px";
-            singlePageDiv.style.borderStyle = "solid";
             document.querySelector(".h").insertAdjacentElement("afterend", singlePageDiv);
             singlePageDiv.classList.add("largeImageView");
             singlePageDiv.style.marginLeft = "230px";
