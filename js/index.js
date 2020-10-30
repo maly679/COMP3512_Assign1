@@ -160,7 +160,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 option = document.createElement("li");
                 option.appendChild(gWebsiteTag);
                 document.querySelector("#galleryInfo").appendChild(option);
-                console.log(document.querySelector("#galleryInfo"));
                 //assining longitude and lattitude to global variables and initiating map
                 clng = gl.Longitude;
                 clat = gl.Latitude;
@@ -509,23 +508,20 @@ document.addEventListener('DOMContentLoaded', function() {
             //hide the current single painting view
             document.querySelector(".singlePage").style.display = "none";
             //re-generate large painting page
-            singlePageDiv = document.createElement("div");
-            singlePageDiv.style.width = "80rem";
             singlePageDiv.style.height = "1300px";
             document.querySelector(".h").insertAdjacentElement("afterend", singlePageDiv);
             singlePageDiv.classList.add("largeImageView");
-            singlePageDiv.style.marginLeft = "230px";
+            singlePageDiv.style.margin = "0 50% 0 50%";
             largeImage.setAttribute("src", paintingSrcChanged);
             largeImage.setAttribute("alt", largeImageAlt);
             largeImage.setAttribute("id", pId);
             largeImage.style.marginTop = "75px";
             singlePageDiv.appendChild(largeImage);
             largeImage.classList.add("imageView");
-            largeImage.style.margin = "35px 0 0 165px";
-
 
 
         } else {
+            singlePageDiv.style.display = "none";
             //revert back to regular single painting view, based on size of w_xxx in src of image being w_700.
             let paintingSrcChg = paintingSrc.split("/");
             if (paintingSrcChg[6] == "w_700") {
@@ -540,14 +536,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // remove large painting page display.
             document.querySelector(".largeImageView").style.display = "none";
-            document.querySelector(".largeImageView").innerHTML = "";
             //revert to regular single painting page view.
-            document.querySelector(".singlePage").style.display = "grid";
+            singlePageDiv.style.display = "grid";
             const regSizedPainting = document.createElement("img");
             regSizedPainting.classList.add("imageView");
             regSizedPainting.setAttribute("src", paintingSrcChg.join("/"));
             document.querySelector(".imageDiv").appendChild(regSizedPainting);
-            console.log(document.querySelector(".imageView"));
             //if clicked again, re-process by invoking current function.
             regSizedPainting.addEventListener("click", function(e) {
                 imageClicked(singlePageDiv, e);
