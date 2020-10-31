@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	//function declararions
 
 	function createMarker(map, latitude, longitude, city) {
-
 		let imageLatLong = {
 			lat: latitude,
 			lng: longitude
@@ -255,7 +254,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function reInitializePaintingList() {
-
 		//re-initializations commence
 		document.querySelector("#paintingsList").style.listStyle = "none";
 		document.querySelector("#artistList").style.listStyle = "none";
@@ -297,7 +295,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 	function processImage(d) {
-
 		paintingSrc = `https://res.cloudinary.com/funwebdev/image/upload/w_600/art/paintings/${d.ImageFileName}`;
 		const singlePageImageView = document.createElement("img");
 		singlePageImageView.setAttribute("src", paintingSrc);
@@ -317,7 +314,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function processParagraphInfo(d) {
-
 		const aMuseum = document.createElement("a");
 		aMuseum.setAttribute("href", d.MuseumLink);
 		aMuseum.textContent = d.MuseumLink;
@@ -403,7 +399,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function createCloseBtn() {
-
 		//creating the close button 
 		const btn = document.createElement("button");
 		btn.classList.add("closeBtn");
@@ -424,7 +419,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function clostBtnProcess() {
-
 		document.querySelector(".singlePage").style.display = "none";
 		document.querySelector(".singlePage").classList.remove("singlePage");
 		document.querySelector(".galleryInformation").style.display = "block";
@@ -644,7 +638,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function initMap() {
-
 		map = new google.maps.Map(document.getElementById('map'), {
 			center: {
 				lat: clat,
