@@ -530,8 +530,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 		document.querySelector(".clickToClose").remove();
 		// remove large painting page display.
-		document.querySelector(".largeImageView").style.display = "none";
-		document.querySelector(".largeImageView").innerHTML = "";
+		document.querySelector(".largeImageView").remove();
 		//revert to regular single painting page view.
 		document.querySelector(".singlePage").style.display = "grid";
 		const regSizedPainting = document.createElement("img");
