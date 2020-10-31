@@ -55,15 +55,18 @@ document.addEventListener('DOMContentLoaded', function () {
 		document.querySelector(".galleryInformation").style.gridRow = "2 / span 1";
 		document.querySelector(".galleryInformation").style.gridColumn = "2 / span 1";
 		document.querySelector(".galleryButton").textContent = "Hide galleries";
+		
 	}
 
 	function updateGalleryID(id) {
 		document.querySelector(".paintings").className = `paintings box ${id}`;
+		
 	}
 
 	function getPaintingInfoURL(id) {
 		let paintingInfoURL = `https://www.randyconnolly.com/funwebdev/3rd/api/art/paintings.php?gallery=${id}`;
 		return paintingInfoURL;
+		
 	}
 
 
@@ -81,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		buttonShowGallery.style.borderRadius = "5px";
 		buttonShowGallery.style.border = "3px solid white";
 		buttonShowGallery.style.fontFamily = "Times New Roman, Times, serif";
+		
 	}
 
 	function addGalleryList(data) {
