@@ -130,7 +130,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				option = document.createElement("li");
 				option.appendChild(gWebsiteTag);
 				document.querySelector("#galleryInfo").appendChild(option);
-				console.log(document.querySelector("#galleryInfo"));
 				//assining longitude and lattitude to global variables and initiating map
 				clng = gl.Longitude;
 				clat = gl.Latitude;
@@ -542,7 +541,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		regSizedPainting.classList.add("imageView");
 		regSizedPainting.setAttribute("src", paintingSrcChg.join("/"));
 		document.querySelector(".imageDiv").appendChild(regSizedPainting);
-		console.log(document.querySelector(".imageView"));
 		//if clicked again, re-process by invoking current function.
 		regSizedPainting.addEventListener("click", function (e) {
 			imageClicked(document.querySelector(".singlePage"), e);
