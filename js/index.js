@@ -140,10 +140,11 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 
 		}
-		//initiate painting processing
+		//initiate painting list processing
 		processPaintingsInfo(e.target.getAttribute("id"), "LastName");
 	}
-
+	
+	//processing header selection of painting list
 	function addHeaderClickListeners(paintingH2) {
 		for (let ph of paintingH2) {
 			ph.addEventListener('click', function (e) {
@@ -164,7 +165,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			});
 		}
 	}
-
+	
+	//sorting painting list based on selected header
 	function sortData(sortBase, data) {
 		if (sortBase == "LastName") {
 			data.sort(function (a, b) {
@@ -223,7 +225,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 		}
 	}
-
+	
+	//adding components of paintings list, which executes upon invokation of main program processPaintingsInfo function below
 	function addPaintingList(data) {
 		let i = 0;
 		for (let d of data) {
@@ -252,7 +255,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		}
 	}
-
+	
+	//occurs when processPaintingsInfo function in main program is invoked
 	function reInitializePaintingList() {
 		//re-initializations commence
 		document.querySelector("#paintingsList").style.listStyle = "none";
@@ -290,7 +294,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		singlePageDiv.appendChild(imageD);
 		imageD.style.gridColumn = "1/2";
 		imageD.style.gridRow = "1/5";
-		//retrieving painitng data
+	
 	}
 
 
@@ -302,6 +306,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		singlePageImageView.classList.add("imageView");
 		singlePageImageView.setAttribute("id", getIDFromClass(document.querySelector(".paintings").className));
 		document.querySelector(".imageDiv").appendChild(singlePageImageView);
+	
 	}
 
 	function processTitle(d) {
@@ -311,6 +316,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		pTitleHeader.textContent = d.Title;
 		pTitleHeader.classList.add('pTitleHeader');
 		document.querySelector(".singlePage").appendChild(pTitleHeader);
+	
 	}
 
 	function processParagraphInfo(d) {
@@ -332,6 +338,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		document.querySelector(".singlePage").appendChild(pPara);
 		pPara.style.gridColumn = "2/3";
 		pPara.style.gridRow = "2/3";
+	
 	}
 
 	function addColorTitle() {
@@ -347,6 +354,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		colorTitle.style.fontStyle = "oblique";
 		colorTitle.style.marginRight = "90px";
 		colorTitle.classList.add("cTitle");
+	
 	}
 
 	function addColorsDiv() {
@@ -359,6 +367,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		document.querySelector(".colorDivBox").style.display = "inline-grid";
 		document.querySelector(".colorDivBox").style.gridTemplateColumns = "16.66% 16.66% 16.66% 16.66% 16.66% 16.66%";
 		document.querySelector(".colorDivBox").style.gridTemplateRows = "auto"
+	
 	}
 
 	function organizeColors(d) {
@@ -416,6 +425,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		btn.style.borderColor = "white";
 		btn.style.borderWidth = "2px";
 		btn.style.height = "50%";
+	
 	}
 
 	function clostBtnProcess() {
@@ -471,6 +481,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		clickToClose.style.color = "darkRed";
 		clickToClose.style.fontSize = "75%";
 		document.querySelector("h1+h2").appendChild(clickToClose);
+	
 	}
 
 	function processLargeImageDisplay(paintingSrcChg) {
@@ -547,15 +558,12 @@ document.addEventListener('DOMContentLoaded', function () {
 	//event triggered upon clicking of above defined button
 	document.querySelector(".showGallery").addEventListener('click', toggleGalleryList);
 	//initiating gallery list showing
-
 	document.querySelector("#galleryList").style.listStyle = "none";
-	//adding loading gif.
+	//adding loading gif
 	const imgGif = document.createElement("img");
 	imgGif.setAttribute("src", "images/loadingGif.gif");
 	imgGif.setAttribute("alt", "Loading");
 	document.querySelector("#galleryList").appendChild(imgGif);
-
-
 	//fetching and assigning data in API to array, for further processing, as required.
 	fetch(galleryURL).then(response => response.json()).then(data => {
 		addGalleryList(data);
@@ -563,29 +571,21 @@ document.addEventListener('DOMContentLoaded', function () {
 	}).catch(error => {
 		console.error(error)
 	});
-
-
 	//initiating process of gallery list selection, by way of clicking.
-
 	document.querySelector("#galleryInfo").style.listStyle = "none";
 	document.querySelector("#galleryList").addEventListener('click', function (e) {
 
 		processGallerySelection(e);
 
 	});
-
 	//process header click on painting list
 	const paintingH2 = document.querySelectorAll("div>h2");
-
 	addHeaderClickListeners(paintingH2);
-
-
 	function processPaintingsInfo(id, sortBase) {
 		//display loading gif while data is retrieved
 		document.querySelector("#title h2").innerHTML = "";
 		document.querySelector("#title h2").appendChild(imgGif);
 		const paintingInfoURL = getPaintingInfoURL(id);
-
 		reInitializePaintingList();
 		//fetch and sort data
 		fetch(paintingInfoURL).then(response => response.json()).then(data => {
@@ -599,7 +599,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			console.error(error)
 		});
 	}
-
 	//process event listener for generating single painting view upon selection of work
 	document.querySelector("#titleList").addEventListener('click', function (e) {
 		organizeSinglePageDiv();
@@ -615,24 +614,20 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 
 	});
-
-
 	//process dsiplay upon click of image, whereby the w_xxx in the src of image is the factor outlining whether single painting view or large painting view should be displayed
 	function imageClicked(singlePageDiv, e) {
 		const largeImage = document.querySelector("img");
 		largeImage.classList.add("imageView");
 		let paintingSrc = largeImage.getAttribute("src");
-
 		let paintingSrcChg = paintingSrc.split("/");
 		//if the size of the painitng (w_600) indicates that the current display is regular single painting, based on the src variable, replace the size of the painting in the src attribute
 		if (paintingSrcChg[6] == "w_600") {
 
 			processLightBox(paintingSrcChg);
-
-
+			
 		} else {
+			
 			revertToSinglePageView(paintingSrc);
-
 
 		}
 	}
