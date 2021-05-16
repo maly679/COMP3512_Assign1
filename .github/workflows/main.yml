@@ -10,8 +10,7 @@ jobs:
         env:
           SOURCE_DIR: "./public"
           AZURE_CLIENT_ID: "d87414e5-c12b-4b4c-98d8-cf4ac2baefb3"
-          AZURE_TENANT_ID: 763126fc-c316-4e3b-87f5-65540322ba35
-          #"64d88933-7ef7-42d1-993d-11c436f2483f"
+          AZURE_TENANT_ID: "64d88933-7ef7-42d1-993d-11c436f2483f"
           AZURE_SECRET: "47055adf-a5c2-426a-a911-692df841a5fe"
           AZURE_SUBSCRIPTION_ID: "a16de862-e4f1-45f1-9862-cd8547d9d3ed"
           AZURE_STORAGE_ACCOUNT_NAME: "teststatic11"
