@@ -8,7 +8,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: feeloor/azure-static-website-deploy@master
         env:
-          SOURCE_DIR: "/"
+          SOURCE_DIR: "./public"
           AZURE_CLIENT_ID: "d87414e5-c12b-4b4c-98d8-cf4ac2baefb3"
           AZURE_TENANT_ID: "64d88933-7ef7-42d1-993d-11c436f2483f"
           AZURE_SECRET: "AKAlf7H1FqqOGtjCT4zO377WHp~umdvmkl"
