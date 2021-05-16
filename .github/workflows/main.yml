@@ -9,7 +9,7 @@ env:
 
   AZURE_RESOURCE_GROUP: Testing
   BLOB_STORAGE_ACCOUNT_NAME: teststatic11
-  CDN_NAME: teststatic11.azureedge.net
+  CDN_NAME: https://teststatic11.azureedge.net
 
 jobs:
   build:
