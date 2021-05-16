@@ -6,10 +6,6 @@ on:
     pull_request:
         branches: [ master ]
 
-env:
-    AZURE_RESOURCE_GROUP: Testing
-    BLOB_STORAGE_ACCOUNT_NAME: teststatic11
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,7 +20,7 @@ jobs:
       with:
         azcliversion: 2.0.72
         inlineScript: |
-            az storage blob upload-batch --account-name ${{ env.BLOB_STORAGE_ACCOUNT_NAME }} -d '$web' -s .
+            az storage blob upload-batch --account-name "teststatic11" -d '$web' -s .
     # name: Purge CDN endpoint
      # uses: azure/CLI@v1
       #with:
