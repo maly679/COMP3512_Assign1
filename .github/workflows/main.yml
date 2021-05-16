@@ -5,6 +5,11 @@ on:
         branches: [ master ]
     pull_request:
         branches: [ master ]
+env:
+
+  AZURE_RESOURCE_GROUP: Testing
+  BLOB_STORAGE_ACCOUNT_NAME: teststatic11
+  CDN_NAME: teststatic11.azureedge.net
 
 jobs:
   build:
@@ -20,13 +25,13 @@ jobs:
       with:
         azcliversion: 2.0.72
         inlineScript: |
-            az storage blob upload-batch --account-name "teststatic11" -d '$web' -s .
+            az storage blob upload-batch --account-name ${{ env.BLOB_STORAGE_ACCOUNT_NAME }} -d '$web' -s .
     - name: Purge CDN endpoint
       uses: azure/CLI@v1
       with:
         azcliversion: 2.0.72
         inlineScript: |
-           az cdn endpoint purge --content-paths  "/*" --profile-name "teststatic11" --name "teststatic11.azureedge.net" --resource-group "Testing" --no-wait
+           az cdn endpoint purge --content-paths  "/*" --profile-name ${{ env.BLOB_STORAGE_ACCOUNT_NAME }} --name ${{ env.CDN_NAME }} --resource-group ${{ env.AZURE_RESOURCE_GROUP }}
 
   # Azure logout 
     - name: logout
