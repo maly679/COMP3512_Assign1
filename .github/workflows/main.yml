@@ -20,15 +20,15 @@ jobs:
       with:
         azcliversion: 2.0.72
         inlineScript: |
-            az storage blob upload-batch --account-name "teststatic11" -d '$web' -s .
-    # name: Purge CDN endpoint
-     # uses: azure/CLI@v1
-      #with:
-        #azcliversion: 2.0.72
-        #inlineScript: |
-     #  az cdn endpoint purge --content-paths  "/*" --profile-name "CDN_PROFILE_NAME" --name "CDN_ENDPOINT" --resource-group ${{ env.AZURE_RESOURCE_GROUP }}
- 
- # Azure logout 
+            az storage blob upload-batch --account-name teststatic11 -d '$web' -s .
+    - name: Purge CDN endpoint
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.0.72
+        inlineScript: |
+           az cdn endpoint purge --content-paths  "/*" --profile-name teststatic11 --name teststatic11.azureedge.net --resource-group Testing
+
+  # Azure logout 
     - name: logout
       run: |
             az logout
