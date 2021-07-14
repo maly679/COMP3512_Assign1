@@ -24,8 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
     function getIDFromClass(classNames) {
         const splitNames = classNames.split(" ");
         return splitNames[2];
-            }
-        }
 
     }
 
