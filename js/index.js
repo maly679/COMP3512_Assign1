@@ -23,9 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function getIDFromClass(classNames) {
         const splitNames = classNames.split(" ");
-        for (let i = 0; i < splitNames.length; i++) {
-            if (i == 2) {
-                return splitNames[i];
+        return splitNames[2];
             }
         }
 
